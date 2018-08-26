@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ColdMusic", "ColdMusic.vcxproj", "{E8A49FEC-435D-3235-AF22-C49AB3455EE0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "id3lib_qt_example", "..\..\..\..\..\下载\压缩\id3lib_qt_example\id3lib_qt_example.vcxproj", "{DAD488EC-1A4C-3367-AA54-37E36BE94D54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8A49FEC-435D-3235-AF22-C49AB3455EE0}.Debug|x64.ActiveCfg = Debug|x64
+		{E8A49FEC-435D-3235-AF22-C49AB3455EE0}.Debug|x64.Build.0 = Debug|x64
+		{E8A49FEC-435D-3235-AF22-C49AB3455EE0}.Release|x64.ActiveCfg = Release|x64
+		{E8A49FEC-435D-3235-AF22-C49AB3455EE0}.Release|x64.Build.0 = Release|x64
+		{DAD488EC-1A4C-3367-AA54-37E36BE94D54}.Debug|x64.ActiveCfg = Debug|x64
+		{DAD488EC-1A4C-3367-AA54-37E36BE94D54}.Debug|x64.Build.0 = Debug|x64
+		{DAD488EC-1A4C-3367-AA54-37E36BE94D54}.Release|x64.ActiveCfg = Release|x64
+		{DAD488EC-1A4C-3367-AA54-37E36BE94D54}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {318A32AE-33CF-4BC6-9B41-83566292939D}
+	EndGlobalSection
+EndGlobal

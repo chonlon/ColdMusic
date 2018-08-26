@@ -1,13 +1,12 @@
 #include "mainwindow.h"
 
-int volume = 0x65;//最后4位表示现在是否处于静音状态
+int volume = 0x65;//最后1位表示现在是否处于静音状态
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
 	this->initUI();
 	this->initPlayer();
     this->initConnect();
-    //play->play();
 }
 
 void MainWindow::initPlayer() {
@@ -25,7 +24,7 @@ void MainWindow::initUI()
 	//    this->setMinimumSize(1022, 670);
 	//    this->setMaximumHeight(670);
 	//    this->setMaximumSize(1400, 900);
-		//设置标题栏
+	//设置标题栏
 	m_titleBar = new TitleBar(this);
 	installEventFilter(m_titleBar);
 	//底部播放部分

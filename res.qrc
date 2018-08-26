@@ -1,2 +1,30 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/logo">
+        <file>coldmusic_logo.png</file>
+    </qresource>
+    <qresource prefix="/background">
+        <file>bckg.png</file>
+        <file>resource/background/blue_transparent.png</file>
+        <file>resource/background/transparent.png</file>
+    </qresource>
+    <qresource prefix="/icon">
+        <file>resource/icon/previous_hover.png</file>
+        <file>resource/icon/previous_normal.png</file>
+        <file>resource/icon/previous_pressed.png</file>
+        <file>resource/icon/next_hover.png</file>
+        <file>resource/icon/next_normal.png</file>
+        <file>resource/icon/next_pressed.png</file>
+        <file>resource/icon/pause_hover.png</file>
+        <file>resource/icon/pause_normal.png</file>
+        <file>resource/icon/play_hover.png</file>
+        <file>resource/icon/play_normal.png</file>
+        <file>resource/icon/close_hover.png</file>
+        <file>resource/icon/close_normal.png</file>
+        <file>resource/icon/close_pressed.png</file>
+        <file>resource/icon/minus_hover.png</file>
+        <file>resource/icon/minus_normal.png</file>
+        <file>resource/icon/playlist.png</file>
+        <file>resource/icon/volume.png</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>

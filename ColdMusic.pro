@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,7 +25,27 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    titlebar.cpp \
+    bottombarui.cpp \
+    leftsidebarui.cpp \
+    contentwidget.cpp \
+    music_play/musicplayer.cpp \
+    playslider.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    titlebar.h \
+    bottombarui.h \
+    leftsidebarui.h \
+    contentwidget.h \ 
+    music_play/musicplayer.h \
+    playslider.h
+
+RESOURCES += \
+    res.qrc
+
+FORMS += \
+    bottombarui.ui \
+    leftsidebarui.ui \
+    contentwidget.ui

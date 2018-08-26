@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E8A49FEC-435D-3235-AF22-C49AB3455EE0}</ProjectGuid>
+    <RootNamespace>ColdMusic</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v141</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>ColdMusic</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v141</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>ColdMusic</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ColdMusic</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ColdMusic</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include\QtMultimedia;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include\QtWidgets;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include\QtGui;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include\QtANGLE;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include\QtNetwork;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include\QtCore;release;.;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>release\</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_MULTIMEDIA_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>
+      </ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib\qtmain.lib;shell32.lib;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib\Qt5Multimedia.lib;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib\Qt5Widgets.lib;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib\Qt5Gui.lib;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib\Qt5Network.lib;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib\Qt5Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib;C:\utils\my_sql\my_sql\lib;C:\utils\postgresql\pgsql\lib;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\ColdMusic.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_MULTIMEDIA_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include\QtMultimedia;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include\QtWidgets;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include\QtGui;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include\QtANGLE;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include\QtNetwork;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\include\QtCore;debug;.;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>debug\</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_DEPRECATED_WARNINGS;QT_MULTIMEDIA_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib\qtmaind.lib;shell32.lib;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib\Qt5Multimediad.lib;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib\Qt5Widgetsd.lib;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib\Qt5Guid.lib;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib\Qt5Networkd.lib;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib\Qt5Cored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\lib;C:\utils\my_sql\my_sql\lib;C:\utils\postgresql\pgsql\lib;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\ColdMusic.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_DEPRECATED_WARNINGS;QT_MULTIMEDIA_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="bottombarui.cpp" />
+    <ClCompile Include="contentwidget.cpp" />
+    <ClCompile Include="leftsidebarui.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="music_play\musicplayer.cpp" />
+    <ClCompile Include="playslider.cpp" />
+    <ClCompile Include="titlebar.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="bottombarui.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bottombarui.h;release\moc_predefs.h;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/mkspecs/win32-msvc -IF:/Code/codeOfSelf/C++/qt/ColdMusic -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtMultimedia -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtWidgets -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtGui -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtANGLE -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtNetwork -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt" bottombarui.h -o release\moc_bottombarui.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC bottombarui.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_bottombarui.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bottombarui.h;debug\moc_predefs.h;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/mkspecs/win32-msvc -IF:/Code/codeOfSelf/C++/qt/ColdMusic -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtMultimedia -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtWidgets -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtGui -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtANGLE -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtNetwork -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt" bottombarui.h -o debug\moc_bottombarui.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC bottombarui.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_bottombarui.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="contentwidget.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">contentwidget.h;release\moc_predefs.h;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/mkspecs/win32-msvc -IF:/Code/codeOfSelf/C++/qt/ColdMusic -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtMultimedia -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtWidgets -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtGui -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtANGLE -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtNetwork -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt" contentwidget.h -o release\moc_contentwidget.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC contentwidget.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_contentwidget.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">contentwidget.h;debug\moc_predefs.h;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/mkspecs/win32-msvc -IF:/Code/codeOfSelf/C++/qt/ColdMusic -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtMultimedia -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtWidgets -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtGui -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtANGLE -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtNetwork -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt" contentwidget.h -o debug\moc_contentwidget.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC contentwidget.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_contentwidget.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="leftsidebarui.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">leftsidebarui.h;release\moc_predefs.h;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/mkspecs/win32-msvc -IF:/Code/codeOfSelf/C++/qt/ColdMusic -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtMultimedia -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtWidgets -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtGui -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtANGLE -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtNetwork -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt" leftsidebarui.h -o release\moc_leftsidebarui.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC leftsidebarui.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_leftsidebarui.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">leftsidebarui.h;debug\moc_predefs.h;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/mkspecs/win32-msvc -IF:/Code/codeOfSelf/C++/qt/ColdMusic -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtMultimedia -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtWidgets -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtGui -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtANGLE -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtNetwork -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt" leftsidebarui.h -o debug\moc_leftsidebarui.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC leftsidebarui.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_leftsidebarui.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="mainwindow.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">mainwindow.h;release\moc_predefs.h;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/mkspecs/win32-msvc -IF:/Code/codeOfSelf/C++/qt/ColdMusic -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtMultimedia -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtWidgets -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtGui -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtANGLE -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtNetwork -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt" mainwindow.h -o release\moc_mainwindow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC mainwindow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_mainwindow.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">mainwindow.h;debug\moc_predefs.h;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/mkspecs/win32-msvc -IF:/Code/codeOfSelf/C++/qt/ColdMusic -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtMultimedia -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtWidgets -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtGui -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtANGLE -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtNetwork -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt" mainwindow.h -o debug\moc_mainwindow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC mainwindow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_mainwindow.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="music_play\musicplayer.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">music_play\musicplayer.h;release\moc_predefs.h;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/mkspecs/win32-msvc -IF:/Code/codeOfSelf/C++/qt/ColdMusic -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtMultimedia -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtWidgets -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtGui -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtANGLE -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtNetwork -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt" music_play\musicplayer.h -o release\moc_musicplayer.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC music_play/musicplayer.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_musicplayer.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">music_play\musicplayer.h;debug\moc_predefs.h;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/mkspecs/win32-msvc -IF:/Code/codeOfSelf/C++/qt/ColdMusic -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtMultimedia -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtWidgets -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtGui -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtANGLE -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtNetwork -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt" music_play\musicplayer.h -o debug\moc_musicplayer.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC music_play/musicplayer.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_musicplayer.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="titlebar.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">titlebar.h;release\moc_predefs.h;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/mkspecs/win32-msvc -IF:/Code/codeOfSelf/C++/qt/ColdMusic -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtMultimedia -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtWidgets -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtGui -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtANGLE -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtNetwork -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt" titlebar.h -o release\moc_titlebar.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC titlebar.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_titlebar.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">titlebar.h;debug\moc_predefs.h;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/mkspecs/win32-msvc -IF:/Code/codeOfSelf/C++/qt/ColdMusic -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtMultimedia -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtWidgets -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtGui -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtANGLE -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtNetwork -IF:/PROGRAMS/IDE/QT/5.9.2/MSVC2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt" titlebar.h -o debug\moc_titlebar.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC titlebar.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_titlebar.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="debug\moc_bottombarui.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_bottombarui.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_contentwidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_contentwidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_leftsidebarui.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_leftsidebarui.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_mainwindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_mainwindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_musicplayer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_musicplayer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;debug\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;release\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_predefs.h;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClCompile Include="debug\moc_titlebar.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_titlebar.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\qrc_res.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\qrc_res.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClInclude Include="playslider.h" />
+    <ClInclude Include="ui_bottombarui.h" />
+    <ClInclude Include="ui_contentwidget.h" />
+    <ClInclude Include="ui_leftsidebarui.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="bottombarui.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bottombarui.ui;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\uic.exe bottombarui.ui -o ui_bottombarui.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UIC bottombarui.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_bottombarui.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bottombarui.ui;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\uic.exe bottombarui.ui -o ui_bottombarui.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UIC bottombarui.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_bottombarui.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="contentwidget.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">contentwidget.ui;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\uic.exe contentwidget.ui -o ui_contentwidget.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UIC contentwidget.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_contentwidget.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">contentwidget.ui;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\uic.exe contentwidget.ui -o ui_contentwidget.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UIC contentwidget.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_contentwidget.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="leftsidebarui.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">leftsidebarui.ui;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\uic.exe leftsidebarui.ui -o ui_leftsidebarui.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UIC leftsidebarui.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_leftsidebarui.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">leftsidebarui.ui;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\uic.exe leftsidebarui.ui -o ui_leftsidebarui.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UIC leftsidebarui.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_leftsidebarui.h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bckg.png" />
+    <None Include="coldmusic_logo.png" />
+    <None Include="resource\icon\next_hover.png" />
+    <None Include="resource\icon\next_normal.png" />
+    <None Include="resource\icon\next_pressed.png" />
+    <None Include="resource\icon\previous_hover.png" />
+    <None Include="resource\icon\previous_normal.png" />
+    <None Include="resource\icon\previous_pressed.png" />
+    <CustomBuild Include="res.qrc">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">res.qrc;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\rcc.exe;coldmusic_logo.png;resource\icon\previous_normal.png;resource\icon\previous_pressed.png;resource\icon\previous_hover.png;resource\icon\next_hover.png;resource\icon\next_pressed.png;resource\icon\next_normal.png;bckg.png;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\rcc.exe -name res res.qrc -o release\qrc_res.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">RCC res.qrc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\qrc_res.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">res.qrc;F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\rcc.exe;coldmusic_logo.png;resource\icon\previous_normal.png;resource\icon\previous_pressed.png;resource\icon\previous_hover.png;resource\icon\next_hover.png;resource\icon\next_pressed.png;resource\icon\next_normal.png;bckg.png;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\PROGRAMS\IDE\QT\5.9.2\MSVC2017_64\bin\rcc.exe -name res res.qrc -o debug\qrc_res.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">RCC res.qrc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\qrc_res.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
