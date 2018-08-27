@@ -38,6 +38,8 @@ public slots:
 
     void showPlayList();
     void volume_btnClicked();
+protected:
+    virtual void mousePressEvent(QMouseEvent *event);
 private:
 	void initUI();
 	void initPlayer();
@@ -46,6 +48,7 @@ private:
 private:
 	TitleBar* m_titleBar;
 	QVBoxLayout *pLayout;
+    QTableWidget *m_playlistTable;
 	QWidget* centerWindow;
 	BottomBarUI* m_bottomBar;
 	LeftSideBarUI* m_leftSideBar;

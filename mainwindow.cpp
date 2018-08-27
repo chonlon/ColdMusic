@@ -1,13 +1,13 @@
 #include "mainwindow.h"
 
-int volume = 0x65;//最后4位表示现在是否处于静音状态
+int volume = 0x65;//最后1位表示现在是否处于静音状态
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
 	this->initUI();
 	this->initPlayer();
     this->initConnect();
-    //play->play();
+    //this->setWindowOpacity(0.5);
 }
 
 void MainWindow::initPlayer() {
@@ -25,15 +25,18 @@ void MainWindow::initUI()
 	//    this->setMinimumSize(1022, 670);
 	//    this->setMaximumHeight(670);
 	//    this->setMaximumSize(1400, 900);
-		//设置标题栏
+    //设置标题栏
 	m_titleBar = new TitleBar(this);
 	installEventFilter(m_titleBar);
 	//底部播放部分
-	m_bottomBar = new BottomBarUI();
+    m_bottomBar = new BottomBarUI(this);
 	//侧边栏 (左边)
-	m_leftSideBar = new LeftSideBarUI();
+    m_leftSideBar = new LeftSideBarUI(this);
 	//内容部分
-	m_contentWidget = new ContentWidget();
+    m_contentWidget = new ContentWidget(this);
+
+    m_playlistTable = NULL;
+
 	//图标
 	this->setWindowIcon(QIcon(":/logo/coldmusic_logo.png"));
 	this->setWindowTitle("Cold Music");
@@ -115,11 +118,11 @@ void MainWindow::playSliderPressed(int position) {
 }
 
 void MainWindow::showPlayList() {
-    QTableWidget *playlistTable = new QTableWidget(this);
-    playlistTable->setObjectName(QStringLiteral("playlistTable"));
-    playlistTable->setGeometry(QRect(747, 345,250,300));
+    m_playlistTable = new QTableWidget(this);
+    m_playlistTable->setObjectName(QStringLiteral("playlistTable"));
+    m_playlistTable->setGeometry(QRect(747, 345,250,300));
      qDebug()<<"------------触发--------------";
-     playlistTable->show();
+     m_playlistTable->show();
      //todo 给主窗口添加一个mouseEvent和一个状态(tablewidget是否在显示),
      //tablewidget在显示的时候, mouseEvent函数有效, 点击则销毁这个tablewidget
      //由于tablewidget显示在主窗口上面, 那么优先响应的应该是这个tablewidget的点击(即在tablewidget范围内的点击不会销毁tablewidget)
@@ -133,6 +136,13 @@ void MainWindow::volume_btnClicked() {
         player->setVolume(volume >> 1);
         volume<<1;
         volume |= 1;
+    }
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *event) {
+    if(this->m_playlistTable) {
+        delete this->m_playlistTable;
+        this->m_playlistTable = NULL;
     }
 }
 MainWindow::~MainWindow()
