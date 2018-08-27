@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTableWidget>
 #include <QString>
+#include <QGraphicsOpacityEffect>
 
 namespace Ui {
 	class ContentWidget;
