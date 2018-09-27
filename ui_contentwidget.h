@@ -79,8 +79,8 @@ public:
         pushButton->setGeometry(QRect(10, 10, 93, 28));
         textEdit = new QTextEdit(contentWindow);
         textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(530, 10, 211, 31));
-        textEdit->setStyleSheet(QLatin1String("font: 25 9pt \"Microsoft YaHei\";\n"
+        textEdit->setGeometry(QRect(530, 10, 211, 29));
+        textEdit->setStyleSheet(QLatin1String("font: 9pt \"Microsoft YaHei UI\";\n"
 "border-image: url(:/background/resource/background/blue_transparent.png);"));
 
         retranslateUi(ContentWidget);

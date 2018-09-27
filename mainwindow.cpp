@@ -88,6 +88,27 @@ void MainWindow::update_SliderPosition(qint64 position) {
 
 void MainWindow::update_PlayList(const QStringList &list) {
 	player->addMusicToList(list);
+    AVFormatContext *fmt_ctx = NULL;
+    AVDictionaryEntry *tag = NULL;
+
+    std::string ba;
+    for(QString fileName : list) {
+        qDebug()<<fileName<<"---\n";
+        ba = fileName.toStdString();
+        const char *fileName_const_char = ba.c_str();
+        qDebug("%s", fileName_const_char);
+        if (avformat_open_input(&fmt_ctx, fileName_const_char, NULL, NULL))
+            return;
+        while ((tag = av_dict_get(fmt_ctx->metadata, "", tag, AV_DICT_IGNORE_SUFFIX))) {
+            if(!strcmp(tag->key, "artist") || !strcmp(tag->key, "title")) {
+                qDebug("key:\t\t");
+                qDebug()<<QString::fromUtf8(tag->key)<<'\n';
+                qDebug("value:\t\t");
+                qDebug()<<QString::fromUtf8(tag->value)<<'\n';
+            }
+         }
+        avformat_close_input(&fmt_ctx);
+    }
     this->list = &list;
 }
 
@@ -123,7 +144,7 @@ void MainWindow::showPlayList() {
     m_playlistTable->setGeometry(QRect(747, 345,250,300));
      qDebug()<<"------------触发--------------";
      m_playlistTable->show();
-     //todo 给主窗口添加一个mouseEvent和一个状态(tablewidget是否在显示),
+     //给主窗口添加一个mouseEvent和一个状态(tablewidget是否在显示),
      //tablewidget在显示的时候, mouseEvent函数有效, 点击则销毁这个tablewidget
      //由于tablewidget显示在主窗口上面, 那么优先响应的应该是这个tablewidget的点击(即在tablewidget范围内的点击不会销毁tablewidget)
 }

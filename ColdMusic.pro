@@ -42,6 +42,12 @@ HEADERS += \
     music_play/musicplayer.h \
     playslider.h
 
+INCLUDEPATH += ffmpeg\include \
+
+#LIBS += $$PWD/ffmpeg/lib/avcodec.lib
+LIBS += $$PWD/ffmpeg/lib/avformat.lib
+LIBS += $$PWD/ffmpeg/lib/avutil.lib
+
 RESOURCES += \
     res.qrc
 

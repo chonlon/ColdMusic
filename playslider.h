@@ -1,6 +1,6 @@
 #ifndef PLAYSLIDER_H
 #define PLAYSLIDER_H
-
+#include <QtCore/QObject>
 #include <QObject>
 #include <QSlider>
 #include <QEvent>

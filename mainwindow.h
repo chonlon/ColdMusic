@@ -11,6 +11,15 @@
 #include <QList>
 #include <QTableWidget>
 
+#include <string>
+#include <cstring>
+
+
+extern "C" {
+#include <libavformat/avformat.h>
+#include <libavutil/dict.h>
+}
+
 #include "titlebar.h"
 #include "bottombarui.h"
 #include "leftsidebarui.h"
