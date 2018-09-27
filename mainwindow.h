@@ -10,9 +10,12 @@
 #include <QMediaPlayer>
 #include <QList>
 #include <QTableWidget>
+#include <synchapi.h>
 
 #include <string>
 #include <cstring>
+#include <vector>
+#include <utility>
 
 
 extern "C" {
@@ -25,6 +28,7 @@ extern "C" {
 #include "leftsidebarui.h"
 #include "contentwidget.h"
 #include "music_play/musicplayer.h"
+#include "music_play/songinfro.h"
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -47,6 +51,8 @@ public slots:
 
     void showPlayList();
     void volume_btnClicked();
+signals:
+    void updatePlayList(const std::vector<SongInfro>& list);
 protected:
     virtual void mousePressEvent(QMouseEvent *event);
 private:
@@ -67,6 +73,7 @@ private:
 
     int position;
     const QStringList* list;
+    std::vector<SongInfro> playList;
 };
 
 #endif // MAINWINDOW_H

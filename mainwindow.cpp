@@ -81,6 +81,8 @@ void MainWindow::initConnect() {
     connect(m_bottomBar, SIGNAL(playSliderPressed(int)), this, SLOT(playSliderPressed(int)));
     connect(m_bottomBar, SIGNAL(showPlayListBtnClicked()), this, SLOT(showPlayList()));
     connect(m_bottomBar, SIGNAL(volume_btnClicked()), this, SLOT(volume_btnClicked()));
+
+    connect(this, SIGNAL(updatePlayList(const std::vector<SongInfro>&)), m_contentWidget, SLOT(updateMusicList(const std::vector<SongInfro>&)));
 }
 void MainWindow::update_SliderPosition(qint64 position) {
 	this->m_bottomBar->setSliderPosition(position, player->getSongTotalTime());
@@ -92,24 +94,34 @@ void MainWindow::update_PlayList(const QStringList &list) {
     AVDictionaryEntry *tag = NULL;
 
     std::string ba;
+    //读取所有mp3信息
     for(QString fileName : list) {
-        qDebug()<<fileName<<"---\n";
+        //QString 转string转char*
         ba = fileName.toStdString();
         const char *fileName_const_char = ba.c_str();
-        qDebug("%s", fileName_const_char);
-        if (avformat_open_input(&fmt_ctx, fileName_const_char, NULL, NULL))
+        if (avformat_open_input(&fmt_ctx, fileName_const_char, NULL, NULL))//throw exception
             return;
+        //对于某一个mp3文件, 读取信息
+        int index;
+        this->playList.emplace_back(index);
         while ((tag = av_dict_get(fmt_ctx->metadata, "", tag, AV_DICT_IGNORE_SUFFIX))) {
-            if(!strcmp(tag->key, "artist") || !strcmp(tag->key, "title")) {
-                qDebug("key:\t\t");
-                qDebug()<<QString::fromUtf8(tag->key)<<'\n';
-                qDebug("value:\t\t");
-                qDebug()<<QString::fromUtf8(tag->value)<<'\n';
+            if(!strcmp(tag->key, "artist")) {
+                QString value = QString::fromUtf8(tag->value);
+                this->playList.back().artist = std::move(value);
+            } else if(!strcmp(tag->key, "title")) {
+                QString value = QString::fromUtf8(tag->value);
+                this->playList.back().title = std::move(value);
+            } else if(!strcmp(tag->key, "album")) {
+                QString value = QString::fromUtf8(tag->value);
+                this->playList.back().album = std::move(value);
             }
          }
+        index++;
         avformat_close_input(&fmt_ctx);
+        Sleep(1);
     }
-    this->list = &list;
+    //this->list = &list;
+    emit updatePlayList(this->playList);
 }
 
 void MainWindow::setPlayerVolume(int value) {

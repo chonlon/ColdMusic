@@ -6,6 +6,10 @@
 #include <QString>
 #include <QGraphicsOpacityEffect>
 
+#include <vector>
+
+#include "music_play/songinfro.h"
+
 namespace Ui {
 	class ContentWidget;
 }
@@ -23,6 +27,7 @@ private:
 
 public slots:
     void addMusicToList();
+    void updateMusicList(const std::vector<SongInfro>& infroList);
 };
 
 #endif // CONTENTWIDGET_H

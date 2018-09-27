@@ -40,7 +40,8 @@ HEADERS += \
     leftsidebarui.h \
     contentwidget.h \ 
     music_play/musicplayer.h \
-    playslider.h
+    playslider.h \
+    music_play/songinfro.h
 
 INCLUDEPATH += ffmpeg\include \
 

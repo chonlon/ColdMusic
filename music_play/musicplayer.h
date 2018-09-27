@@ -24,6 +24,12 @@ public:
     int addMusicToList(const QStringList& list);
     //设置歌曲进度(分成一百份)
     void setDuration(int position);
+    
+    //现在播放的序号
+    int getCurrentIndex();
+    void setCurrentIndex(int index);
+    //获取现在所有歌曲名字
+    void getSongNameOnList();
 private:
 	QMediaPlayer *player;
 	QMediaPlaylist *playList;

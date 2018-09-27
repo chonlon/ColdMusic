@@ -92,11 +92,6 @@ QScrollBar::handle:vertical        // 垂直滚动条 handle
        <string>时长</string>
       </property>
      </column>
-     <column>
-      <property name="text">
-       <string>大小</string>
-      </property>
-     </column>
     </widget>
    </widget>
    <widget class="QPushButton" name="pushButton">
