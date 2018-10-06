@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 
-int volume = 0x65;//最后1位表示现在是否处于静音状态
+//未必比使用两个char更加节省内存, 但是为了只使用一个变量保存.
+//本来使用8位(char)刚好, 但是这会给左移带来麻烦, 所以用两个字节保存.
+short volume = 0x65;//0b 110010 1前7位表示音量数值, 最后一位表示是否处于静音, 1表示不是静音.
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -66,11 +69,16 @@ void MainWindow::initUI()
 
 void MainWindow::initConnect() {
     connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(update_SliderPosition(qint64)));
+
+
     connect(m_leftSideBar, SIGNAL(addedMusic(QStringList)), this, SLOT(update_PlayList(QStringList)));
     //connect(m_leftSideBar, SIGNAL(updatePlayList(QStringList)), this,SLOT(update_PlayListToShow(QStringList)));
+
+
     connect(m_bottomBar, SIGNAL(volumeSliderValueChanged(int)), this, SLOT(setPlayerVolume(int)));
     connect(m_bottomBar, SIGNAL(nextbtnClicked()), this, SLOT(setNextSong()));
     connect(m_bottomBar, SIGNAL(previousbtnClicked()), this, SLOT(setPreviousSong()));
+
     connect(m_bottomBar, SIGNAL(playSong()), player, SLOT(play()));
     connect(m_bottomBar, SIGNAL(pauseSong()), player, SLOT(pause()));
 
@@ -79,8 +87,10 @@ void MainWindow::initConnect() {
     connect(m_bottomBar, SIGNAL(playSliderRelased()), this, SLOT(playSliderReleased()));
     //slider被点击的时候
     connect(m_bottomBar, SIGNAL(playSliderPressed(int)), this, SLOT(playSliderPressed(int)));
+
     connect(m_bottomBar, SIGNAL(showPlayListBtnClicked()), this, SLOT(showPlayList()));
     connect(m_bottomBar, SIGNAL(volume_btnClicked()), this, SLOT(volume_btnClicked()));
+
 
     connect(this, SIGNAL(updatePlayList(const std::vector<SongInfro>&)), m_contentWidget, SLOT(updateMusicList(const std::vector<SongInfro>&)));
 }
@@ -88,40 +98,55 @@ void MainWindow::update_SliderPosition(qint64 position) {
 	this->m_bottomBar->setSliderPosition(position, player->getSongTotalTime());
 }
 
-void MainWindow::update_PlayList(const QStringList &list) {
-	player->addMusicToList(list);
-    AVFormatContext *fmt_ctx = NULL;
-    AVDictionaryEntry *tag = NULL;
+void getSongsInfor(const QStringList *list, std::vector<SongInfro>* playList){
+    AVFormatContext *fmt_ctx = nullptr;
+    AVDictionaryEntry *tag = nullptr;
 
     std::string ba;
     //读取所有mp3信息
-    for(QString fileName : list) {
+    for(QString fileName : (*list)) {
         //QString 转string转char*
+        //目的是转成本地化编码(gbk)
         ba = fileName.toStdString();
         const char *fileName_const_char = ba.c_str();
         if (avformat_open_input(&fmt_ctx, fileName_const_char, NULL, NULL))//throw exception
             return;
-        //对于某一个mp3文件, 读取信息
+
         int index;
-        this->playList.emplace_back(index);
+       (*playList).emplace_back(index);
+        //对于某一个mp3文件, 读取信息
         while ((tag = av_dict_get(fmt_ctx->metadata, "", tag, AV_DICT_IGNORE_SUFFIX))) {
             if(!strcmp(tag->key, "artist")) {
-                QString value = QString::fromUtf8(tag->value);
-                this->playList.back().artist = std::move(value);
+                QString value = std::move(QString::fromUtf8(tag->value));
+                (*playList).back().artist = std::move(value);
             } else if(!strcmp(tag->key, "title")) {
-                QString value = QString::fromUtf8(tag->value);
-                this->playList.back().title = std::move(value);
+                QString value = std::move(QString::fromUtf8(tag->value));
+                (*playList).back().title = std::move(value);
             } else if(!strcmp(tag->key, "album")) {
-                QString value = QString::fromUtf8(tag->value);
-                this->playList.back().album = std::move(value);
+                QString value = std::move(QString::fromUtf8(tag->value));
+                (*playList).back().album = std::move(value);
             }
          }
         index++;
         avformat_close_input(&fmt_ctx);
-        Sleep(1);
     }
+}
+
+void MainWindow::update_PlayList(const QStringList &list) {
+	player->addMusicToList(list);
+
     //this->list = &list;
-    emit updatePlayList(this->playList);
+    //在界面主线程里面分析信息会导致卡顿.
+    //所以增加线程, 在子线程里面完成.
+    //std::function<void(const QStringList&, std::vector<SongInfro>&)> getSongsInfor_f(getSongsInfor);
+    std::thread p(getSongsInfor, &list, &playList);
+    p.join();
+    //QThread *thread_infor =QThread::create(getSongsInfor, &list, &playList);
+    //thread_infor->start();
+   //if(!thread_infor->wait()) {
+    if(!this->playList.empty())
+        emit updatePlayList(this->playList);
+   //}
 }
 
 void MainWindow::setPlayerVolume(int value) {
@@ -167,12 +192,12 @@ void MainWindow::volume_btnClicked() {
         volume &=0xfe;
     } else {
         player->setVolume(volume >> 1);
-        volume<<1;
         volume |= 1;
     }
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event) {
+    //播放列表被显示时, 点击主界面其他部分则取消显示播放列表
     if(this->m_playlistTable) {
         delete this->m_playlistTable;
         this->m_playlistTable = NULL;

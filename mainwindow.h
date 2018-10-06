@@ -10,12 +10,17 @@
 #include <QMediaPlayer>
 #include <QList>
 #include <QTableWidget>
+#include <QThread>
 #include <synchapi.h>
+
 
 #include <string>
 #include <cstring>
 #include <vector>
 #include <utility>
+#include <thread>
+#include <future>
+#include <functional>
 
 
 extern "C" {
@@ -29,10 +34,12 @@ extern "C" {
 #include "contentwidget.h"
 #include "music_play/musicplayer.h"
 #include "music_play/songinfro.h"
+void getSongsInfor(const QStringList* list, std::vector<SongInfro>* playList);
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT
-
+    //因为是只读的, 所以不用加锁.
+    //friend void getSongsInfor(const QStringList* list, std::vector<SongInfro>* playList);
 public:
 	MainWindow(QWidget *parent = 0);
 	~MainWindow();
@@ -59,6 +66,8 @@ private:
 	void initUI();
 	void initPlayer();
 	void initConnect();
+
+
 
 private:
 	TitleBar* m_titleBar;

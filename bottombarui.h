@@ -47,13 +47,13 @@ signals:
 private slots:
 
     void on_volume_slider_sliderMoved(int position);
-    //播放/暂停
+    //根据现在播放状态设置播放/暂停
     void playpauseSong();
 
     void on_play_slider_sliderPressed();
 
     void on_pushButton_6_clicked();
-
+    //设置音量, 值为1到100整数
     void on_volume_btn_clicked();
 
 private:

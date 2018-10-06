@@ -5,3 +5,19 @@
 /debug
 /release/ColdMusic.tlog
 /release
+
+
+#语法检查py脚本
+t.py
+
+#autosave
+*.autosave
+
+
+#vistual studio files
+*.vcxproj
+*.filters
+*.user
+.vs/
+v15/*
+

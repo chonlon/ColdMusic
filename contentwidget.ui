@@ -59,13 +59,11 @@
 }
 background-color:rgba(255,255,255,128)
 
-QScrollBar::handle:vertical        // 垂直滚动条 handle
-{
-    background: rgba(255,255,255,20%); // 垂直滚动条 handle 的背景色
-    border: 0px solid grey;            // 垂直滚动条 handle 边框
-    border-radius:3px;                 // 垂直滚动条 handle 圆角
-    width: 8px;                        // 垂直滚动条 handle 宽度
-}</string>
+QScrollBar{background:transparent; width: 5px;}
+QScrollBar::handle{background:lightgray; border:2px solid transparent; border-radius:5px;}
+        QScrollBar::handle:hover{background:gray;}
+        QScrollBar::sub-line{background:transparent;}
+        QScrollBar::add-line{background:transparent;}</string>
      </property>
      <column>
       <property name="text">
