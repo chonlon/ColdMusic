@@ -30,8 +30,9 @@ SOURCES += \
     bottombarui.cpp \
     leftsidebarui.cpp \
     contentwidget.cpp \
-    music_play/musicplayer.cpp \
-    playslider.cpp
+    playslider.cpp \
+    music_play/musplayer_qmediaplayer.cpp \
+    music_play/musicplayer.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,9 +40,10 @@ HEADERS += \
     bottombarui.h \
     leftsidebarui.h \
     contentwidget.h \ 
-    music_play/musicplayer.h \
     playslider.h \
-    music_play/songinfro.h
+    music_play/songinfro.h \
+    music_play/musicplayer.h \
+    music_play/musplayer_qmediaplayer.h
 
 INCLUDEPATH += ffmpeg\include \
 

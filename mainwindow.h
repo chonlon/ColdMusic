@@ -17,6 +17,7 @@
 #include <vector>
 #include <utility>
 
+class MusicPlayer;
 
 extern "C" {
 #include <libavformat/avformat.h>
@@ -27,7 +28,6 @@ extern "C" {
 #include "bottombarui.h"
 #include "leftsidebarui.h"
 #include "contentwidget.h"
-#include "music_play/musicplayer.h"
 #include "music_play/songinfro.h"
 class MainWindow : public QMainWindow
 {

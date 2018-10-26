@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 
-int volume = 0x65;//最后1位表示现在是否处于静音状态
+#include "music_play/musplayer_qmediaplayer.h"
+
+static int volume = 0x65;//最后1位表示现在是否处于静音状态
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -11,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 void MainWindow::initPlayer() {
-	player = new MusicPlayer();
+    player = new MusicPlayer_QMediaPlayer;
 	player->setVolume(50);
 }
 
@@ -35,7 +37,7 @@ void MainWindow::initUI()
 	//内容部分
     m_contentWidget = new ContentWidget(this);
 
-    m_playlistTable = NULL;
+    m_playlistTable = nullptr;
 
 	//图标
 	this->setWindowIcon(QIcon(":/logo/coldmusic_logo.png"));
@@ -85,13 +87,13 @@ void MainWindow::initConnect() {
     connect(this, SIGNAL(updatePlayList(const std::vector<SongInfro>&)), m_contentWidget, SLOT(updateMusicList(const std::vector<SongInfro>&)));
 }
 void MainWindow::update_SliderPosition(qint64 position) {
-	this->m_bottomBar->setSliderPosition(position, player->getSongTotalTime());
+    this->m_bottomBar->setSliderPosition(position, static_cast<qint64>(player->getSongTotalTime()));
 }
 
 void MainWindow::update_PlayList(const QStringList &list) {
 	player->addMusicToList(list);
-    AVFormatContext *fmt_ctx = NULL;
-    AVDictionaryEntry *tag = NULL;
+    AVFormatContext *fmt_ctx = nullptr;
+    AVDictionaryEntry *tag = nullptr;
 
     std::string ba;
     //读取所有mp3信息
@@ -99,7 +101,7 @@ void MainWindow::update_PlayList(const QStringList &list) {
         //QString 转string转char*
         ba = fileName.toStdString();
         const char *fileName_const_char = ba.c_str();
-        if (avformat_open_input(&fmt_ctx, fileName_const_char, NULL, NULL))//throw exception
+        if (avformat_open_input(&fmt_ctx, fileName_const_char, nullptr, NULL))//throw exception
             return;
         //对于某一个mp3文件, 读取信息
         int index;
@@ -125,17 +127,17 @@ void MainWindow::update_PlayList(const QStringList &list) {
 }
 
 void MainWindow::setPlayerVolume(int value) {
-    player->setVolume(value);
+    player->setVolume(static_cast<uint8_t>(value));
     volume &= 1;
     volume = (value<<1) | volume;
 }
 
 void MainWindow::setNextSong() {
-    player->nextSong();
+    player->setNextSong();
 }
 
 void MainWindow::setPreviousSong() {
-    player->previousSong();
+    player->setPreviousSong();
 }
 
 void MainWindow::playSliderMoved(int position) {
@@ -143,11 +145,11 @@ void MainWindow::playSliderMoved(int position) {
 }
 
 void MainWindow::playSliderReleased() {
-    player->setDuration(this->position);
+    player->setDuration(static_cast<uint8_t>(this->position));
 }
 
 void MainWindow::playSliderPressed(int position) {
-    player->setDuration(position);
+    player->setDuration(static_cast<uint8_t>(position));
 }
 
 void MainWindow::showPlayList() {
@@ -166,8 +168,7 @@ void MainWindow::volume_btnClicked() {
         player->setVolume(0);
         volume &=0xfe;
     } else {
-        player->setVolume(volume >> 1);
-        volume<<1;
+        player->setVolume(static_cast<uint8_t>(volume >> 1));
         volume |= 1;
     }
 }
@@ -175,7 +176,7 @@ void MainWindow::volume_btnClicked() {
 void MainWindow::mousePressEvent(QMouseEvent *event) {
     if(this->m_playlistTable) {
         delete this->m_playlistTable;
-        this->m_playlistTable = NULL;
+        this->m_playlistTable = nullptr;
     }
 }
 MainWindow::~MainWindow()
