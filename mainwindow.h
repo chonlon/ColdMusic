@@ -16,6 +16,7 @@
 #include <cstring>
 #include <vector>
 #include <utility>
+#include <thread>
 
 class MusicPlayer;
 
@@ -61,8 +62,7 @@ protected:
 private:
 	void initUI();
 	void initPlayer();
-	void initConnect();
-
+    void initConnect();
 private:
     TitleBar* m_title_bar_;
     QVBoxLayout *p_layout_;

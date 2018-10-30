@@ -86,46 +86,55 @@ void MainWindow::initConnect() {
 
     connect(this, SIGNAL(updatePlayList(const std::vector<SongInfro>&)), m_content_widget_, SLOT(updateMusicList(const std::vector<SongInfro>&)));
 }
+
+static void getSongsInfor(const QStringList *list, std::vector<SongInfro>* playList){
+    AVFormatContext *fmt_ctx = nullptr;
+    AVDictionaryEntry *tag = nullptr;
+
+    std::string ba;
+    int32_t index = 0;
+    //读取所有mp3信息
+    for(QString fileName : (*list)) {
+        //QString 转string转char*
+        //目的是转成本地化编码(gbk)
+        ba = fileName.toStdString();
+        const char *fileName_const_char = ba.c_str();
+        if (avformat_open_input(&fmt_ctx, fileName_const_char, nullptr, nullptr))//throw exception
+            return;
+
+       (*playList).emplace_back(index);
+        //对于某一个mp3文件, 读取信息
+        while ((tag = av_dict_get(fmt_ctx->metadata, "", tag, AV_DICT_IGNORE_SUFFIX))) {
+            if(!strcmp(tag->key, "artist")) {
+                QString value = QString::fromUtf8(tag->value);
+                (*playList).back().artist = std::move(value);
+            } else if(!strcmp(tag->key, "title")) {
+                QString value = QString::fromUtf8(tag->value);
+                (*playList).back().title = std::move(value);
+            } else if(!strcmp(tag->key, "album")) {
+                QString value =QString::fromUtf8(tag->value);
+                (*playList).back().album = std::move(value);
+            }
+         }
+        playList->back().total_time = fmt_ctx->duration;
+        index++;
+        avformat_close_input(&fmt_ctx);
+    }
+}
 void MainWindow::update_SliderPosition(qint64 position) {
     this->m_bottom_bar_->setSliderPosition(position, static_cast<qint64>(player_->getSongTotalTime()));
 }
 
 void MainWindow::update_PlayList(const QStringList &list) {
     player_->addMusicToList(list);
-    AVFormatContext *fmt_ctx = nullptr;
-    AVDictionaryEntry *tag = nullptr;
 
-    std::string ba;
-    //读取所有mp3信息
-    int index(0);
-    for(QString fileName : list) {
-        //QString 转string转char*
-        ba = fileName.toStdString();
-        const char *fileName_const_char = ba.c_str();
-        if (avformat_open_input(&fmt_ctx, fileName_const_char, nullptr, nullptr))//throw exception
-            return;
-        //对于某一个mp3文件, 读取信息
+    //在界面主线程里面分析信息会导致卡顿.
+    //所以增加线程, 在子线程里面完成.
+    std::thread p(getSongsInfor, &list, &playList);
+    p.join();
+    if(!this->playList.empty())
+        emit updatePlayList(this->playList);
 
-        this->playList.emplace_back(index);
-        while ((tag = av_dict_get(fmt_ctx->metadata, "", tag, AV_DICT_IGNORE_SUFFIX))) {
-            if(!strcmp(tag->key, "artist")) {
-                QString value = QString::fromUtf8(tag->value);
-                this->playList.back().artist = std::move(value);
-            } else if(!strcmp(tag->key, "title")) {
-                QString value = QString::fromUtf8(tag->value);
-                this->playList.back().title = std::move(value);
-            } else if(!strcmp(tag->key, "album")) {
-                QString value = QString::fromUtf8(tag->value);
-                this->playList.back().album = std::move(value);
-            }
-         }
-        this->playList.back().total_time = fmt_ctx->duration / AV_TIME_BASE;
-        index++;
-        avformat_close_input(&fmt_ctx);
-        avformat_free_context(fmt_ctx);
-    }
-    //this->list = &list;
-    emit updatePlayList(this->playList);
 }
 
 void MainWindow::setPlayerVolume(int value) {
