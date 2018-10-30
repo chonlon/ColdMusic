@@ -20,7 +20,7 @@ void MainWindow::initPlayer() {
 void MainWindow::initUI()
 {
 	//设置窗口无边框(以便自己定义窗口边框)
-	setWindowFlags(Qt::FramelessWindowHint);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint);
 
 	//设置窗口大小属性
 	setFixedSize(1022, 670);
