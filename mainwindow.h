@@ -34,7 +34,7 @@ class MainWindow : public QMainWindow
 	Q_OBJECT
 
 public:
-	MainWindow(QWidget *parent = 0);
+    MainWindow(QWidget *parent = nullptr);
 	~MainWindow();
 
 public slots:
@@ -51,6 +51,9 @@ public slots:
 
     void showPlayList();
     void volume_btnClicked();
+private slots:
+    void play();
+    void pause();
 signals:
     void updatePlayList(const std::vector<SongInfro>& list);
 protected:
@@ -61,15 +64,14 @@ private:
 	void initConnect();
 
 private:
-	TitleBar* m_titleBar;
-	QVBoxLayout *pLayout;
-    QTableWidget *m_playlistTable;
+    TitleBar* m_title_bar_;
+    QVBoxLayout *p_layout_;
+    QTableWidget *m_playlist_table_;
 	QWidget* centerWindow;
-	BottomBarUI* m_bottomBar;
-	LeftSideBarUI* m_leftSideBar;
-	ContentWidget* m_contentWidget;
-	MusicPlayer* player;
-	QMediaPlayer *play;
+    BottomBarUI* m_bottom_bar_;
+    LeftSideBarUI* m_leftSide_bar_;
+    ContentWidget* m_content_widget_;
+    MusicPlayer* player_;
 
     int position;
     const QStringList* list;

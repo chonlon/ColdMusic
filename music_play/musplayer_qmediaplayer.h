@@ -30,7 +30,7 @@ public:
     virtual bool setNextSong();
     virtual bool setPreviousSong();
 
-    virtual int32_t addMusicToList(const std::vector<std::string>& list) {}
+    virtual int32_t addMusicToList(const std::vector<std::string>& list) { return 0; }
     int32_t addMusicToList(const QStringList& list);
 
     virtual bool setDuration(uint8_t position);
@@ -39,9 +39,9 @@ public:
 
     virtual bool setCurrentIndex(uint16_t index);
 
-    virtual bool getSongNameToList( std::vector<std::string>* song_name_list ) {}
+    virtual bool getSongNameToList( std::vector<std::string>* song_name_list ) { return false; }
 
-    virtual bool changeLoopMode(MusicPlayer::loop_modes mode) {}
+    virtual bool changeLoopMode(MusicPlayer::loop_modes mode);
 
     virtual ~MusicPlayer_QMediaPlayer();
 private:
@@ -57,6 +57,7 @@ private:
     void* operator= (const MusicPlayer_QMediaPlayer&);
 
 signals:
+    /// <summary>在歌曲进度改变的时候通知其他部件(比如slider和显示已播放时间的lable)</summary>
     void positionChanged(qint64 position);
 public slots:
 private slots:

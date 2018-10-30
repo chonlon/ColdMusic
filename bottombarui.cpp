@@ -9,7 +9,7 @@ BottomBarUI::BottomBarUI(QWidget *parent) :
 {
 	ui->setupUi(this);
     ui->volume_slider->setValue(50);
-    playState = PLAYING;
+    play_state_ = PLAYING;
     connect(ui->volume_slider, SIGNAL(sliderMoved(int)), SLOT(on_volume_slider_sliderMoved(int)));
     connect(ui->next_btn, SIGNAL(clicked(bool)), this, SIGNAL(nextbtnClicked()));
     connect(ui->play_btn, SIGNAL(clicked(bool)), this,SLOT(playpauseSong()));
@@ -46,20 +46,20 @@ void BottomBarUI::on_volume_slider_sliderMoved(int position)
 
 
 void BottomBarUI::playpauseSong() {
-    if(playState == PLAYING) {
+    if(play_state_ == PLAYING) {
         qDebug()<<"playing";
        ui->play_btn->setStyleSheet("QPushButton{border-image: url(:/icon/resource/icon/play_normal.png);}\
                                        QPushButton:hover{border-image: url(:/icon/resource/icon/play_hover.png);}\
                                        QPushButton:pressed{border-image: url(:/icon/resource/icon/play_hover.png);}");
        emit pauseSong();
-       playState = PAUSING;
-    } else if(playState == PAUSING) {
+       play_state_ = PAUSING;
+    } else if(play_state_ == PAUSING) {
         qDebug()<<"pausing";
         ui->play_btn->setStyleSheet("QPushButton{border-image: url(:/icon/resource/icon/pause_normal.png);}\
                                         QPushButton:hover{border-image: url(:/icon/resource/icon/pause_hover.png);}\
                                         QPushButton:pressed{border-image: url(:/icon/resource/icon/pause_hover.png);}");
         emit playSong();
-        playState = PLAYING;
+        play_state_ = PLAYING;
     }
 }
 

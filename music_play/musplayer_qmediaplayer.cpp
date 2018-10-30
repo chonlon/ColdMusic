@@ -130,3 +130,22 @@ bool MusicPlayer_QMediaPlayer::setCurrentIndex(uint16_t index) {
     play_list_->setCurrentIndex(static_cast<int>(index));
     return return_value;
 }
+
+bool MusicPlayer_QMediaPlayer::changeLoopMode(MusicPlayer::loop_modes mode) {
+    //const int32_t mode_copy = mode;
+    switch (mode) {
+        case MusicPlayer::m_loop :
+            play_list_->setPlaybackMode(QMediaPlaylist::Loop);
+            break;
+        case MusicPlayer::m_random :
+            play_list_->setPlaybackMode(QMediaPlaylist::Random);
+            break;
+        case MusicPlayer::m_current_loop :
+            play_list_->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+            break;
+        default:
+        // 这里不该到达
+        assert(0 && "Unhandled special enum constant!");
+    }
+    return true;
+}

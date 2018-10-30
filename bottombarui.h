@@ -16,7 +16,7 @@ class BottomBarUI : public QWidget
 	Q_OBJECT
 
 public:
-	explicit BottomBarUI(QWidget *parent = 0);
+    explicit BottomBarUI(QWidget *parent = nullptr);
 	~BottomBarUI();
 
     //设置播放滑杆的位置(随着歌曲播放改变), 暂时把timelable的值的设置也放到这里面
@@ -58,9 +58,9 @@ private slots:
 
 private:
 	Ui::BottomBarUI *ui;
-	qint64 song_TotalTime;
+    qint64 song_totaltime_;
 
-    int playState;
+    int play_state_;
 };
 
 #endif // BOTTOMBARUI_H

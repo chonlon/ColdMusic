@@ -70,7 +70,7 @@ public:
     /// </summary>
     virtual bool setCurrentIndex(uint16_t index) = 0;
 
-    enum loop_modes{m_loop};
+    enum loop_modes{m_loop, m_random, m_current_loop};
     virtual bool changeLoopMode(loop_modes mode) = 0;
 
     /// <return param: song_name_list> 由于虚函数不能是模版函数. 所以只能先提供一个丑陋的接口了.

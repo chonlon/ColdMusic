@@ -45,17 +45,12 @@ ContentWidget::ContentWidget(QWidget *parent) :
 }
 
 void ContentWidget::updateMusicList(const std::vector<SongInfro>& infroList) {
-    //int row = ui->tableWidget->currentRow();
 
     const int title_column = 1;
     const int artist_column = 2;
     const int album_column = 3;
     for(SongInfro i : infroList) {
         ui->tableWidget->insertRow(i.currentIndex);
-        //ui->tableWidget->insertColumn(title_column);
-        //ui->tableWidget->insertColumn(artist_column);
-        //ui->tableWidget->insertColumn(ablum_column);
-        qDebug()<<i.currentIndex<<"\t\t"<<i.title<<"---\n";
         QTableWidgetItem *item_title = new QTableWidgetItem(i.title);
         item_title->setTextColor(QColor(25,25,25));
         item_title->setFont(QString::fromLocal8Bit("微软雅黑", 10));
@@ -71,19 +66,7 @@ void ContentWidget::updateMusicList(const std::vector<SongInfro>& infroList) {
         item_album->setFont(QString::fromLocal8Bit("微软雅黑", 10));
         ui->tableWidget->setItem(i.currentIndex, album_column, item_album);
     }
-//    for(SongInfro i : infroList) {
-//        QTableWidgetItem *item_artist = new QTableWidgetItem(i.artist);
-//        item_artist->setTextColor(QColor(25,25,25));
-//        item_artist->setFont(QString::fromLocal8Bit("微软雅黑", 10));
-//        ui->tableWidget->setItem(i.currentIndex, artist_column, item_artist);
-//    }
-//    for(SongInfro i : infroList) {
-//        QTableWidgetItem *item_ablum = new QTableWidgetItem(i.album);
-//        item_ablum->setTextColor(QColor(25,25,25));
-//        item_ablum->setFont(QString::fromLocal8Bit("微软雅黑", 10));
-//        ui->tableWidget->setItem(i.currentIndex, ablum_column, item_ablum);
-//    }
-    //ui->tableWidget->item(0, 0)->setText(QString("test"));
+
 }
 void ContentWidget::addMusicToList(){}
 

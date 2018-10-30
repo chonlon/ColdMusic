@@ -6,4 +6,5 @@
 /release/ColdMusic.tlog
 /release
 *.user
+*.pro.user
 *.autosave

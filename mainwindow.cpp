@@ -13,8 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 void MainWindow::initPlayer() {
-    player = new MusicPlayer_QMediaPlayer;
-	player->setVolume(50);
+    player_ = new MusicPlayer_QMediaPlayer;
+    player_->setVolume(50);
 }
 
 void MainWindow::initUI()
@@ -28,16 +28,16 @@ void MainWindow::initUI()
 	//    this->setMaximumHeight(670);
 	//    this->setMaximumSize(1400, 900);
     //设置标题栏
-	m_titleBar = new TitleBar(this);
-	installEventFilter(m_titleBar);
+    m_title_bar_ = new TitleBar(this);
+    installEventFilter(m_title_bar_);
 	//底部播放部分
-    m_bottomBar = new BottomBarUI(this);
+    m_bottom_bar_ = new BottomBarUI(this);
 	//侧边栏 (左边)
-    m_leftSideBar = new LeftSideBarUI(this);
+    m_leftSide_bar_ = new LeftSideBarUI(this);
 	//内容部分
-    m_contentWidget = new ContentWidget(this);
+    m_content_widget_ = new ContentWidget(this);
 
-    m_playlistTable = nullptr;
+    m_playlist_table_ = nullptr;
 
 	//图标
 	this->setWindowIcon(QIcon(":/logo/coldmusic_logo.png"));
@@ -53,45 +53,45 @@ void MainWindow::initUI()
 	//调整布局
 	centerWindow->setPalette(palette);
 	this->setCentralWidget(centerWindow);
-	pLayout = new QVBoxLayout(this);
+    p_layout_ = new QVBoxLayout(this);
 	QHBoxLayout *pHLayout = new QHBoxLayout();
-	pHLayout->addWidget(m_leftSideBar);
-	pHLayout->addWidget(m_contentWidget);
-	pLayout->addWidget(m_titleBar);
-	pLayout->addLayout(pHLayout);
-	pLayout->addWidget(m_bottomBar);
+    pHLayout->addWidget(m_leftSide_bar_);
+    pHLayout->addWidget(m_content_widget_);
+    p_layout_->addWidget(m_title_bar_);
+    p_layout_->addLayout(pHLayout);
+    p_layout_->addWidget(m_bottom_bar_);
 	//pLayout->addStretch();
-	pLayout->setSpacing(0);
-	pLayout->setContentsMargins(0, 0, 0, 0);
-	centerWindow->setLayout(pLayout);
+    p_layout_->setSpacing(0);
+    p_layout_->setContentsMargins(0, 0, 0, 0);
+    centerWindow->setLayout(p_layout_);
 }
 
 void MainWindow::initConnect() {
-    connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(update_SliderPosition(qint64)));
-    connect(m_leftSideBar, SIGNAL(addedMusic(QStringList)), this, SLOT(update_PlayList(QStringList)));
+    connect(player_, SIGNAL(positionChanged(qint64)), this, SLOT(update_SliderPosition(qint64)));
+    connect(m_leftSide_bar_, SIGNAL(addedMusic(QStringList)), this, SLOT(update_PlayList(QStringList)));
     //connect(m_leftSideBar, SIGNAL(updatePlayList(QStringList)), this,SLOT(update_PlayListToShow(QStringList)));
-    connect(m_bottomBar, SIGNAL(volumeSliderValueChanged(int)), this, SLOT(setPlayerVolume(int)));
-    connect(m_bottomBar, SIGNAL(nextbtnClicked()), this, SLOT(setNextSong()));
-    connect(m_bottomBar, SIGNAL(previousbtnClicked()), this, SLOT(setPreviousSong()));
-    connect(m_bottomBar, SIGNAL(playSong()), player, SLOT(play()));
-    connect(m_bottomBar, SIGNAL(pauseSong()), player, SLOT(pause()));
+    connect(m_bottom_bar_, SIGNAL(volumeSliderValueChanged(int)), this, SLOT(setPlayerVolume(int)));
+    connect(m_bottom_bar_, SIGNAL(nextbtnClicked()), this, SLOT(setNextSong()));
+    connect(m_bottom_bar_, SIGNAL(previousbtnClicked()), this, SLOT(setPreviousSong()));
+    connect(m_bottom_bar_, SIGNAL(playSong()), this, SLOT(play()));
+    connect(m_bottom_bar_, SIGNAL(pauseSong()), this, SLOT(pause()));
 
     //这里两个slot需要配合, 避免拖动slider的时候导致刺耳的声音
-    connect(m_bottomBar, SIGNAL(playSliderMoved(int)), this, SLOT(playSliderMoved(int)));
-    connect(m_bottomBar, SIGNAL(playSliderRelased()), this, SLOT(playSliderReleased()));
+    connect(m_bottom_bar_, SIGNAL(playSliderMoved(int)), this, SLOT(playSliderMoved(int)));
+    connect(m_bottom_bar_, SIGNAL(playSliderRelased()), this, SLOT(playSliderReleased()));
     //slider被点击的时候
-    connect(m_bottomBar, SIGNAL(playSliderPressed(int)), this, SLOT(playSliderPressed(int)));
-    connect(m_bottomBar, SIGNAL(showPlayListBtnClicked()), this, SLOT(showPlayList()));
-    connect(m_bottomBar, SIGNAL(volume_btnClicked()), this, SLOT(volume_btnClicked()));
+    connect(m_bottom_bar_, SIGNAL(playSliderPressed(int)), this, SLOT(playSliderPressed(int)));
+    connect(m_bottom_bar_, SIGNAL(showPlayListBtnClicked()), this, SLOT(showPlayList()));
+    connect(m_bottom_bar_, SIGNAL(volume_btnClicked()), this, SLOT(volume_btnClicked()));
 
-    connect(this, SIGNAL(updatePlayList(const std::vector<SongInfro>&)), m_contentWidget, SLOT(updateMusicList(const std::vector<SongInfro>&)));
+    connect(this, SIGNAL(updatePlayList(const std::vector<SongInfro>&)), m_content_widget_, SLOT(updateMusicList(const std::vector<SongInfro>&)));
 }
 void MainWindow::update_SliderPosition(qint64 position) {
-    this->m_bottomBar->setSliderPosition(position, static_cast<qint64>(player->getSongTotalTime()));
+    this->m_bottom_bar_->setSliderPosition(position, static_cast<qint64>(player_->getSongTotalTime()));
 }
 
 void MainWindow::update_PlayList(const QStringList &list) {
-	player->addMusicToList(list);
+    player_->addMusicToList(list);
     AVFormatContext *fmt_ctx = nullptr;
     AVDictionaryEntry *tag = nullptr;
 
@@ -101,7 +101,7 @@ void MainWindow::update_PlayList(const QStringList &list) {
         //QString 转string转char*
         ba = fileName.toStdString();
         const char *fileName_const_char = ba.c_str();
-        if (avformat_open_input(&fmt_ctx, fileName_const_char, nullptr, NULL))//throw exception
+        if (avformat_open_input(&fmt_ctx, fileName_const_char, nullptr, nullptr))//throw exception
             return;
         //对于某一个mp3文件, 读取信息
         int index;
@@ -120,24 +120,23 @@ void MainWindow::update_PlayList(const QStringList &list) {
          }
         index++;
         avformat_close_input(&fmt_ctx);
-        Sleep(1);
     }
     //this->list = &list;
     emit updatePlayList(this->playList);
 }
 
 void MainWindow::setPlayerVolume(int value) {
-    player->setVolume(static_cast<uint8_t>(value));
+    player_->setVolume(static_cast<uint8_t>(value));
     volume &= 1;
     volume = (value<<1) | volume;
 }
 
 void MainWindow::setNextSong() {
-    player->setNextSong();
+    player_->setNextSong();
 }
 
 void MainWindow::setPreviousSong() {
-    player->setPreviousSong();
+    player_->setPreviousSong();
 }
 
 void MainWindow::playSliderMoved(int position) {
@@ -145,19 +144,19 @@ void MainWindow::playSliderMoved(int position) {
 }
 
 void MainWindow::playSliderReleased() {
-    player->setDuration(static_cast<uint8_t>(this->position));
+    player_->setDuration(static_cast<uint8_t>(this->position));
 }
 
 void MainWindow::playSliderPressed(int position) {
-    player->setDuration(static_cast<uint8_t>(position));
+    player_->setDuration(static_cast<uint8_t>(position));
 }
 
 void MainWindow::showPlayList() {
-    m_playlistTable = new QTableWidget(this);
-    m_playlistTable->setObjectName(QStringLiteral("playlistTable"));
-    m_playlistTable->setGeometry(QRect(747, 345,250,300));
+    m_playlist_table_ = new QTableWidget();
+    m_playlist_table_->setObjectName(QStringLiteral("playlistTable"));
+    m_playlist_table_->setGeometry(QRect(747, 345,250,300));
      qDebug()<<"------------触发--------------";
-     m_playlistTable->show();
+     m_playlist_table_->show();
      //给主窗口添加一个mouseEvent和一个状态(tablewidget是否在显示),
      //tablewidget在显示的时候, mouseEvent函数有效, 点击则销毁这个tablewidget
      //由于tablewidget显示在主窗口上面, 那么优先响应的应该是这个tablewidget的点击(即在tablewidget范围内的点击不会销毁tablewidget)
@@ -165,18 +164,28 @@ void MainWindow::showPlayList() {
 
 void MainWindow::volume_btnClicked() {
     if(volume & 1) {
-        player->setVolume(0);
+        player_->setVolume(0);
         volume &=0xfe;
     } else {
-        player->setVolume(static_cast<uint8_t>(volume >> 1));
+        player_->setVolume(static_cast<uint8_t>(volume >> 1));
         volume |= 1;
     }
 }
 
+void MainWindow::play()
+{
+    player_->play();
+}
+
+void MainWindow::pause()
+{
+    player_->pause();
+}
+
 void MainWindow::mousePressEvent(QMouseEvent *event) {
-    if(this->m_playlistTable) {
-        delete this->m_playlistTable;
-        this->m_playlistTable = nullptr;
+    if(this->m_playlist_table_) {
+        delete this->m_playlist_table_;
+        this->m_playlist_table_ = nullptr;
     }
 }
 MainWindow::~MainWindow()

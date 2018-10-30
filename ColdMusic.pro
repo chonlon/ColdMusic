@@ -32,7 +32,8 @@ SOURCES += \
     contentwidget.cpp \
     playslider.cpp \
     music_play/musplayer_qmediaplayer.cpp \
-    music_play/musicplayer.cpp
+    music_play/musicplayer.cpp \
+    music_play/mp3infoanalyst.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -43,7 +44,8 @@ HEADERS += \
     playslider.h \
     music_play/songinfro.h \
     music_play/musicplayer.h \
-    music_play/musplayer_qmediaplayer.h
+    music_play/musplayer_qmediaplayer.h \
+    music_play/mp3infoanalyst.h
 
 INCLUDEPATH += ffmpeg\include \
 

@@ -115,8 +115,8 @@ bool TitleBar::eventFilter(QObject *obj, QEvent *event)
 			m_pIconLabel->setPixmap(icon.pixmap(m_pIconLabel->size()));
 			return true;
 		}
-	}
-	case QEvent::WindowStateChange:
+    }
+    case QEvent::WindowStateChange:
 	case QEvent::Resize:
 		updateMaximize();
 		return true;
