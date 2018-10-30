@@ -5,7 +5,6 @@ struct SongInfro{
     QString artist;
     QString album;
     QString title;
-    int64_t total_time;
 
     /// 当前序号
     int currentIndex;

@@ -97,7 +97,6 @@ void MainWindow::update_PlayList(const QStringList &list) {
 
     std::string ba;
     //读取所有mp3信息
-    int index(0);
     for(QString fileName : list) {
         //QString 转string转char*
         ba = fileName.toStdString();
@@ -105,7 +104,7 @@ void MainWindow::update_PlayList(const QStringList &list) {
         if (avformat_open_input(&fmt_ctx, fileName_const_char, nullptr, nullptr))//throw exception
             return;
         //对于某一个mp3文件, 读取信息
-
+        int index;
         this->playList.emplace_back(index);
         while ((tag = av_dict_get(fmt_ctx->metadata, "", tag, AV_DICT_IGNORE_SUFFIX))) {
             if(!strcmp(tag->key, "artist")) {
@@ -119,10 +118,8 @@ void MainWindow::update_PlayList(const QStringList &list) {
                 this->playList.back().album = std::move(value);
             }
          }
-        this->playList.back().total_time = fmt_ctx->duration / AV_TIME_BASE;
         index++;
         avformat_close_input(&fmt_ctx);
-        avformat_free_context(fmt_ctx);
     }
     //this->list = &list;
     emit updatePlayList(this->playList);
