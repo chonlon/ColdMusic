@@ -46,11 +46,20 @@ ContentWidget::ContentWidget(QWidget *parent) :
 
 void ContentWidget::updateMusicList(const std::vector<SongInfro>& infroList) {
 
+    const int index_column = 0;
     const int title_column = 1;
     const int artist_column = 2;
     const int album_column = 3;
+    const int time_column = 4;
     for(SongInfro i : infroList) {
+        qDebug()<<i.currentIndex<<":"<<i.title<<"\n";
         ui->tableWidget->insertRow(i.currentIndex);
+
+        QTableWidgetItem *item_index = new QTableWidgetItem(QString::number(i.currentIndex));
+        item_index->setTextColor(QColor(25,25,25));
+        item_index->setFont(QString::fromLocal8Bit("微软雅黑", 10));
+        ui->tableWidget->setItem(i.currentIndex, index_column, item_index);
+
         QTableWidgetItem *item_title = new QTableWidgetItem(i.title);
         item_title->setTextColor(QColor(25,25,25));
         item_title->setFont(QString::fromLocal8Bit("微软雅黑", 10));
@@ -65,6 +74,17 @@ void ContentWidget::updateMusicList(const std::vector<SongInfro>& infroList) {
         item_album->setTextColor(QColor(25,25,25));
         item_album->setFont(QString::fromLocal8Bit("微软雅黑", 10));
         ui->tableWidget->setItem(i.currentIndex, album_column, item_album);
+
+        // 将时间(s)转换为显示的时间格式:(xx:xx)
+        QString total_time;
+        total_time.append(QString::number(i.total_time/60));
+        total_time.push_back(":");
+        total_time.append(QString::number((i.total_time%60)));
+
+        QTableWidgetItem *item_time = new QTableWidgetItem(total_time);
+        item_time->setTextColor(QColor(25,25,25));
+        item_time->setFont(QString::fromLocal8Bit("微软雅黑", 10));
+        ui->tableWidget->setItem(i.currentIndex, time_column, item_time);
     }
 
 }
