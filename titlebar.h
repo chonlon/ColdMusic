@@ -13,13 +13,13 @@ public:
 	explicit TitleBar(QWidget *parent = nullptr);
 	~TitleBar();
 protected:
-	// 双击标题栏进行界面的最大化/还原
+    /// 双击标题栏进行界面的最大化/还原
 	virtual void mouseDoubleClickEvent(QMouseEvent *event);
 
-	// 进行鼠界面的拖动
+    /// 进行鼠界面的拖动
 	virtual void mousePressEvent(QMouseEvent *event);
 
-	// 设置界面标题与图标
+    /// 设置界面标题与图标
 	virtual bool eventFilter(QObject *obj, QEvent *event);
 signals:
 

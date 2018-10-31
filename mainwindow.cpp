@@ -20,6 +20,8 @@ void MainWindow::initPlayer() {
 void MainWindow::initUI()
 {
 	//设置窗口无边框(以便自己定义窗口边框)
+    //设置响应windows通用的菜单快捷方式
+    //设置响应windows状态栏的点击事件
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint);
 
 	//设置窗口大小属性
@@ -87,6 +89,8 @@ void MainWindow::initConnect() {
     connect(this, SIGNAL(updatePlayList(const std::vector<SongInfro>&)), m_content_widget_, SLOT(updateMusicList(const std::vector<SongInfro>&)));
 }
 
+//static void getSongsInfor(const QStringList *list, std::vector<SongInfro>* playList, MainWindow* pw){
+
 static void getSongsInfor(const QStringList *list, std::vector<SongInfro>* playList){
     AVFormatContext *fmt_ctx = nullptr;
     AVDictionaryEntry *tag = nullptr;
@@ -115,8 +119,8 @@ static void getSongsInfor(const QStringList *list, std::vector<SongInfro>* playL
                 QString value =QString::fromUtf8(tag->value);
                 (*playList).back().album = std::move(value);
             }
-         }
-        playList->back().total_time = fmt_ctx->duration;
+         }avformat_find_stream_info(fmt_ctx, nullptr);
+        playList->back().total_time = fmt_ctx->duration / AV_TIME_BASE;
         index++;
         avformat_close_input(&fmt_ctx);
     }
@@ -128,13 +132,15 @@ void MainWindow::update_SliderPosition(qint64 position) {
 void MainWindow::update_PlayList(const QStringList &list) {
     player_->addMusicToList(list);
 
+    //void (MainWindow::*update)();
+    //update = &MainWindow::emitUpdatePlyalistSignal;
     //在界面主线程里面分析信息会导致卡顿.
     //所以增加线程, 在子线程里面完成.
     std::thread p(getSongsInfor, &list, &playList);
     p.join();
-    if(!this->playList.empty())
-        emit updatePlayList(this->playList);
 
+    if(!this->playList.empty())
+           emit updatePlayList(this->playList);
 }
 
 void MainWindow::setPlayerVolume(int value) {
@@ -184,6 +190,11 @@ void MainWindow::volume_btnClicked() {
     }
 }
 
+void MainWindow::emitUpdatePlyalistSignal()
+{
+    emit updatePlayList(playList);
+}
+
 void MainWindow::play()
 {
     player_->play();
@@ -202,4 +213,13 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
 }
 MainWindow::~MainWindow()
 {
+    delete m_title_bar_;
+    delete p_layout_;
+    delete m_playlist_table_;
+    delete centerWindow;
+    delete m_bottom_bar_;
+    delete m_leftSide_bar_;
+    delete m_content_widget_;
+    delete player_;
+    delete list;
 }

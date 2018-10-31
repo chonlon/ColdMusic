@@ -77,9 +77,11 @@ void ContentWidget::updateMusicList(const std::vector<SongInfro>& infroList) {
 
         // 将时间(s)转换为显示的时间格式:(xx:xx)
         QString total_time;
-        total_time.append(QString::number(i.total_time/60));
-        total_time.push_back(":");
-        total_time.append(QString::number((i.total_time%60)));
+        total_time.append(QString::number(i.total_time / 60));
+        total_time.push_back(" : ");
+        int ss = i.total_time % 60;
+        if(ss < 10) total_time.push_back("0");
+        total_time.append(QString::number(ss));
 
         QTableWidgetItem *item_time = new QTableWidgetItem(total_time);
         item_time->setTextColor(QColor(25,25,25));
