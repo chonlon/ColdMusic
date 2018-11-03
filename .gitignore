@@ -10,3 +10,9 @@
 *.autosave
 *.user
 *.filters
+*.db
+*.sqlite
+*.opendb
+*.suo
+*.ipch
+

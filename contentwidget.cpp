@@ -2,12 +2,12 @@
 #include "ui_contentwidget.h"
 #include <QDebug>
 
-ContentWidget::ContentWidget(QWidget *parent) :
-	QWidget(parent),
-	ui(new Ui::ContentWidget)
+ContentWidget::ContentWidget(QWidget *parent)
+    : QWidget(parent), ui(new Ui::ContentWidget)
 {
-	ui->setupUi(this);
-    ui->tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    ui->setupUi(this);
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(
+        0, QHeaderView::ResizeToContents);
 
     ui->tableWidget->setStyleSheet("background-color:rgba(255,255,255,128)");
 
@@ -34,8 +34,10 @@ ContentWidget::ContentWidget(QWidget *parent) :
     pal.setBrush(QPalette::Base, QBrush(QColor(255, 255, 255)));
     ui->tableWidget->setPalette(pal);
     //设置竖直滚动条样式
-    ui->tableWidget->setStyleSheet("QScrollBar{background:transparent; width: 5px;}"
-        "QScrollBar::handle{background:lightgray; border:2px solid transparent; border-radius:5px;}"
+    ui->tableWidget->setStyleSheet(
+        "QScrollBar{background:transparent; width: 5px;}"
+        "QScrollBar::handle{background:lightgray; border:2px solid "
+        "transparent; border-radius:5px;}"
         "QScrollBar::handle:hover{background:gray;}"
         "QScrollBar::sub-line{background:transparent;}"
         "QScrollBar::add-line{background:transparent;}");
@@ -44,49 +46,50 @@ ContentWidget::ContentWidget(QWidget *parent) :
     setAcceptDrops(true);
 }
 
-void ContentWidget::updateMusicList(const std::vector<SongInfro>& infroList) {
-
+void ContentWidget::updateMusicList(const std::vector<SongInfro> &infroList)
+{
     const int index_column = 0;
     const int title_column = 1;
     const int artist_column = 2;
     const int album_column = 3;
     const int time_column = 4;
-    for(SongInfro i : infroList) {
-        qDebug()<<i.currentIndex<<":"<<i.title<<"\n";
+    for (SongInfro i : infroList) {
+        qDebug() << i.currentIndex << ":" << i.title << "\n";
         ui->tableWidget->insertRow(i.currentIndex + 1);
 
-        QTableWidgetItem *item_index = new QTableWidgetItem(QString::number(i.currentIndex));
-        item_index->setTextColor(QColor(25,25,25));
+        QTableWidgetItem *item_index =
+            new QTableWidgetItem(QString::number(i.currentIndex));
+        item_index->setTextColor(QColor(25, 25, 25));
         item_index->setFont(QString::fromLocal8Bit("微软雅黑", 10));
         ui->tableWidget->setItem(i.currentIndex, index_column, item_index);
 
         QTableWidgetItem *item_title = nullptr;
-        if(i.title.size()) {
+        if (i.title.size()) {
             item_title = new QTableWidgetItem(i.title);
         } else {
             item_title = new QTableWidgetItem("unknown");
         }
-        item_title->setTextColor(QColor(25,25,25));
+        item_title->setTextColor(QColor(25, 25, 25));
         item_title->setFont(QString::fromLocal8Bit("微软雅黑", 10));
         ui->tableWidget->setItem(i.currentIndex, title_column, item_title);
 
         QTableWidgetItem *item_artist = nullptr;
-        if(i.artist.size()) {
-           item_artist = new QTableWidgetItem(i.artist);
+        if (i.artist.size()) {
+            item_artist = new QTableWidgetItem(i.artist);
         } else {
             item_artist = new QTableWidgetItem("unknown");
         }
-        item_artist->setTextColor(QColor(25,25,25));
+        item_artist->setTextColor(QColor(25, 25, 25));
         item_artist->setFont(QString::fromLocal8Bit("微软雅黑", 10));
         ui->tableWidget->setItem(i.currentIndex, artist_column, item_artist);
 
         QTableWidgetItem *item_album = nullptr;
-        if(i.album.size()) {
+        if (i.album.size()) {
             item_album = new QTableWidgetItem(i.album);
         } else {
             item_album = new QTableWidgetItem("unknown");
         }
-        item_album->setTextColor(QColor(25,25,25));
+        item_album->setTextColor(QColor(25, 25, 25));
         item_album->setFont(QString::fromLocal8Bit("微软雅黑", 10));
         ui->tableWidget->setItem(i.currentIndex, album_column, item_album);
 
@@ -95,19 +98,19 @@ void ContentWidget::updateMusicList(const std::vector<SongInfro>& infroList) {
         total_time.append(QString::number(i.total_time / 60));
         total_time.push_back(" : ");
         int ss = i.total_time % 60;
-        if(ss < 10) total_time.push_back("0");
+        if (ss < 10)
+            total_time.push_back("0");
         total_time.append(QString::number(ss));
 
         QTableWidgetItem *item_time = new QTableWidgetItem(total_time);
-        item_time->setTextColor(QColor(25,25,25));
+        item_time->setTextColor(QColor(25, 25, 25));
         item_time->setFont(QString::fromLocal8Bit("微软雅黑", 10));
         ui->tableWidget->setItem(i.currentIndex, time_column, item_time);
     }
-
 }
-void ContentWidget::addMusicToList(){}
+void ContentWidget::addMusicToList() {}
 
 ContentWidget::~ContentWidget()
 {
-	delete ui;
+    delete ui;
 }

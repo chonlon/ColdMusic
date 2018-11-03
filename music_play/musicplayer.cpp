@@ -1,5 +1,3 @@
 #include "musicplayer.h"
 
-MusicPlayer::~MusicPlayer() {
-
-}
+MusicPlayer::~MusicPlayer() {}

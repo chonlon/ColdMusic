@@ -1,24 +1,22 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QIcon>
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QIcon>
+#include <QList>
+#include <QMainWindow>
+#include <QMediaPlayer>
+#include <QTableWidget>
 #include <QVBoxLayout>
 #include <QWidget>
-#include <QMediaPlayer>
-#include <QList>
-#include <QTableWidget>
 #include <synchapi.h>
 
-#include <string>
 #include <cstring>
-#include <vector>
-#include <utility>
+#include <string>
 #include <thread>
-
-
+#include <utility>
+#include <vector>
 
 extern "C" {
 #include <libavformat/avformat.h>
@@ -33,19 +31,18 @@ class MusicPlayer;
 
 #include "music_play/songinfro.h"
 
-class MainWindow : public QMainWindow
-{
-	Q_OBJECT
+class MainWindow : public QMainWindow {
+    Q_OBJECT
 public:
     MainWindow(QWidget *parent = nullptr);
-	~MainWindow();
+    ~MainWindow();
 
 public slots:
     /// 更新bottomui的播放slider和lable(其实这里函数名还是该加上lable的)
-	void update_SliderPosition(qint64 position);
+    void update_SliderPosition(qint64 position);
 
     /// 更新播放列表, 包括musicplayer的播放列表和contentui的显示信息
-	void update_PlayList(const QStringList& list);
+    void update_PlayList(const QStringList &list);
 
     /// 设置音量
     void setPlayerVolume(int value);
@@ -69,25 +66,28 @@ private slots:
     void play();
     void pause();
 signals:
-    void updatePlayList(const std::vector<SongInfro>& list);
+    void updatePlayList(const std::vector<SongInfro> &list);
+
 protected:
     virtual void mousePressEvent(QMouseEvent *event);
+
 private:
-	void initUI();
-	void initPlayer();
+    void initUI();
+    void initPlayer();
     void initConnect();
+
 private:
-    TitleBar* m_title_bar_;
+    TitleBar *m_title_bar_;
     QVBoxLayout *p_layout_;
     QTableWidget *m_playlist_table_;
-	QWidget* centerWindow;
-    BottomBarUI* m_bottom_bar_;
-    LeftSideBarUI* m_leftSide_bar_;
-    ContentWidget* m_content_widget_;
-    MusicPlayer* player_;
+    QWidget *centerWindow;
+    BottomBarUI *m_bottom_bar_;
+    LeftSideBarUI *m_leftSide_bar_;
+    ContentWidget *m_content_widget_;
+    MusicPlayer *player_;
 
     int position;
-    const QStringList* list;
+    const QStringList *list;
     std::vector<SongInfro> playList;
 };
 

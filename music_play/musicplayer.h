@@ -1,11 +1,11 @@
 #ifndef MUSICPLAYER_H
 #define MUSICPLAYER_H
-#include<QObject>
+#include <QObject>
 
 class MusicPlayer : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 public:
-    explicit MusicPlayer() { }
+    explicit MusicPlayer() {}
     ~MusicPlayer();
 
     /// <summary>播放目前在列表的歌曲
@@ -49,8 +49,8 @@ public:
     /// 比如使用QStringList, 那么在子类中只实现空函数, 另外提供其他版本的函数
     /// </param>
     /// <summary> 添加歌曲到播放列表中, 返回成功添加的歌曲数量 </summary>
-    virtual int32_t addMusicToList(const std::vector<std::string>& list) = 0;
-    virtual int32_t addMusicToList(const QStringList& list) = 0;
+    virtual int32_t addMusicToList(const std::vector<std::string> &list) = 0;
+    virtual int32_t addMusicToList(const QStringList &list) = 0;
 
     /// <param  name: position> 希望地歌曲进度, 以百分比来调整歌曲进度
     /// 范围: 0 - 100
@@ -70,7 +70,7 @@ public:
     /// </summary>
     virtual bool setCurrentIndex(uint16_t index) = 0;
 
-    enum loop_modes{m_loop, m_random, m_current_loop};
+    enum loop_modes { m_loop, m_random, m_current_loop };
     virtual bool changeLoopMode(loop_modes mode) = 0;
 
     /// <return param: song_name_list> 由于虚函数不能是模版函数. 所以只能先提供一个丑陋的接口了.
@@ -81,13 +81,13 @@ public:
     /// 成功返回true
     /// 失败返回false
     /// </summary>
-    virtual bool getSongNameToList( std::vector<std::string>* song_name_list ) = 0;
+    virtual bool
+    getSongNameToList(std::vector<std::string> *song_name_list) = 0;
 
 private:
-
     // no copying allowed
-    MusicPlayer(const MusicPlayer& player);
-    void* operator= (const MusicPlayer& player);
+    MusicPlayer(const MusicPlayer &player);
+    void *operator=(const MusicPlayer &player);
 };
 
 #endif // MUSICPLAYER_H
