@@ -53,24 +53,39 @@ void ContentWidget::updateMusicList(const std::vector<SongInfro>& infroList) {
     const int time_column = 4;
     for(SongInfro i : infroList) {
         qDebug()<<i.currentIndex<<":"<<i.title<<"\n";
-        ui->tableWidget->insertRow(i.currentIndex);
+        ui->tableWidget->insertRow(i.currentIndex + 1);
 
         QTableWidgetItem *item_index = new QTableWidgetItem(QString::number(i.currentIndex));
         item_index->setTextColor(QColor(25,25,25));
         item_index->setFont(QString::fromLocal8Bit("微软雅黑", 10));
         ui->tableWidget->setItem(i.currentIndex, index_column, item_index);
 
-        QTableWidgetItem *item_title = new QTableWidgetItem(i.title);
+        QTableWidgetItem *item_title = nullptr;
+        if(i.title.size()) {
+            item_title = new QTableWidgetItem(i.title);
+        } else {
+            item_title = new QTableWidgetItem("unknown");
+        }
         item_title->setTextColor(QColor(25,25,25));
         item_title->setFont(QString::fromLocal8Bit("微软雅黑", 10));
         ui->tableWidget->setItem(i.currentIndex, title_column, item_title);
 
-        QTableWidgetItem *item_artist = new QTableWidgetItem(i.artist);
+        QTableWidgetItem *item_artist = nullptr;
+        if(i.artist.size()) {
+           item_artist = new QTableWidgetItem(i.artist);
+        } else {
+            item_artist = new QTableWidgetItem("unknown");
+        }
         item_artist->setTextColor(QColor(25,25,25));
         item_artist->setFont(QString::fromLocal8Bit("微软雅黑", 10));
         ui->tableWidget->setItem(i.currentIndex, artist_column, item_artist);
 
-        QTableWidgetItem *item_album = new QTableWidgetItem(i.album);
+        QTableWidgetItem *item_album = nullptr;
+        if(i.album.size()) {
+            item_album = new QTableWidgetItem(i.album);
+        } else {
+            item_album = new QTableWidgetItem("unknown");
+        }
         item_album->setTextColor(QColor(25,25,25));
         item_album->setFont(QString::fromLocal8Bit("微软雅黑", 10));
         ui->tableWidget->setItem(i.currentIndex, album_column, item_album);

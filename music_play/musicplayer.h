@@ -5,7 +5,7 @@
 class MusicPlayer : public QObject {
   Q_OBJECT
 public:
-    MusicPlayer() { }
+    explicit MusicPlayer() { }
     ~MusicPlayer();
 
     /// <summary>播放目前在列表的歌曲

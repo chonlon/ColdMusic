@@ -106,7 +106,7 @@ bool TitleBar::eventFilter(QObject *obj, QEvent *event)
 			return true;
 		}
 	}
-	case QEvent::WindowIconChange:
+    case QEvent::WindowIconChange:
 	{
 		QWidget *pWidget = qobject_cast<QWidget *>(obj);
 		if (pWidget)

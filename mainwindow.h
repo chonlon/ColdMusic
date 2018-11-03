@@ -18,17 +18,19 @@
 #include <utility>
 #include <thread>
 
-class MusicPlayer;
+
 
 extern "C" {
 #include <libavformat/avformat.h>
 #include <libavutil/dict.h>
 }
 
-#include "titlebar.h"
-#include "bottombarui.h"
-#include "leftsidebarui.h"
-#include "contentwidget.h"
+class TitleBar;
+class BottomBarUI;
+class LeftSideBarUI;
+class ContentWidget;
+class MusicPlayer;
+
 #include "music_play/songinfro.h"
 
 class MainWindow : public QMainWindow
